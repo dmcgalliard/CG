@@ -16,6 +16,12 @@ class Player extends Sprite {
         if (down)  vel.add(new PVector(0, speed));
         // update the position by velocity
         pos.add(vel);
+
+        //fix bounds 
+        if(pos.x < 0 + size.x/2) pos.x = size.x/2;
+        if(pos.x > width - size.x/2) pos.x = width - size.x/2;
+        if(pos.y < 0 + size.y/2) pos.y = size.y/2;
+        if(pos.y > height - size.y/2) pos.y = height - size.y/2;
         // always try to decelerate
         vel.mult(0.9);
     }
