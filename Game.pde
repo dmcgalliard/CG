@@ -1,13 +1,20 @@
-//this function runs one time at the beginning 
-//think.... pre-code 
-void setup() { 
-    size(800, 600); //window size, 800 wide, 600 tall
+SpriteManager _SM;
+
+void setup() {
+    size(1024, 768);
+    _SM = new SpriteManager();
+    _SM.spawn(new Invader(250, 50));
 }
 
+void draw() {
+    background(0);
+    _SM.manage();
+}
 
-//always runs at the speed of the frame rate 
-//think... FPS
-void draw() { 
-    //a circle that follows the mouse, 50x50, WxH
-    ellipse(mouseX, mouseY, 50, 50);
+void keyPressed() {
+    _SM.player.keyDown();
+}
+
+void keyReleased() {
+    _SM.player.keyUp();
 }
