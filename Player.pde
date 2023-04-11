@@ -19,6 +19,17 @@ class Player extends Sprite {
         // always try to decelerate
         vel.mult(0.9);
     }
+
+    @Override 
+    void display() { 
+        fill(200, 0, 200);
+        ellipse(pos.x, pos.y, size.x, size.y);
+    }
+
+    @Override
+    void handleCollision() { 
+        //don't die 
+    }
     void keyUp() {
         switch(key) { // key is a global value
             case 'a':
