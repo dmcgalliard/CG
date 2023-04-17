@@ -2,12 +2,15 @@ class Grenade extends Sprite  {
 
 
    long mark, wait = 1000;
-  
+   //long mark2, wait2 = 5000;
    Grenade(float x, float y, PVector velocity, int team) {
        super(x, y, 30, 30);
        vel = velocity;
        this.team = team;
        mark = millis();
+      // mark2 = millis();
+
+
    }
 
 
@@ -22,16 +25,17 @@ class Grenade extends Sprite  {
        super.update();
        PVector aim = new PVector(_SM.player.pos.x - this.pos.x, _SM.player.pos.y - this.pos.y);
        aim = aim.normalize().mult(8);
-
-
+       if(this.pos.x < 0 + size.x/2) _SM.destroy(this);
+       if(this.pos.x > width - size.x/2) _SM.destroy(this);
+       if(this.pos.y < 0 + size.y/2) _SM.destroy(this);
+       if(this.pos.y > height - size.y/2) _SM.destroy(this);
+      
        if(millis() - mark > wait) {
            mark = millis();
            _SM.spawn(new Bullet(pos, aim, team));
-           //Bullet.remove(Grenade);
-       }
+        }
+    }
 
 
-
-
-   }
 }
+
