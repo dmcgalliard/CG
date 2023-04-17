@@ -1,10 +1,12 @@
 class Shooter extends Invader { 
 
     long mark, wait = 1200; //ms
+    long mark2, wait2 = 2500;
 
     Shooter(float x, float y) { 
         super(x,y);
         mark = millis();
+        mark2 = millis();
     }
 
     @Override
@@ -16,6 +18,11 @@ class Shooter extends Invader {
         if(millis() - mark > wait) { 
             mark = millis();
             _SM.spawn(new Bullet(pos, aim, team));
+        }
+
+        if(millis() - mark2 > wait2) { 
+            mark2 = millis();
+            _SM.spawn(new Grenade(pos, aim, team));
         }
     }
 

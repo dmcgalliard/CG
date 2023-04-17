@@ -4,7 +4,7 @@ class Player extends Sprite {
     Player(float x, float y) {
         // super refers to the parent
         // ... I use it here as a constructor
-        super(x, y, 40, 40); // in this case, Sprite
+        super(x, y, 20, 20); // in this case, Sprite
         team = 1;
     }
     @Override
